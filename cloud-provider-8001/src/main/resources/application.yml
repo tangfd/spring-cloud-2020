@@ -1,0 +1,19 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: provider-payment
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://cloud.mysql.com:3306/cloud2020?allowPublicKeyRetrieval=true
+    username: root
+    password: Tangfd@123.com
+#响应json 中 null值过滤
+  jackson:
+    default-property-inclusion: non_null
+
+# spring boot集成mybatis的方式打印sql
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -1,0 +1,22 @@
+POST http://localhost:8001/save
+Content-Type: application/json
+
+{"code":"asd","amount":432.123}
+
+###
+
+GET http://localhost:8001/get/9cf7a123cd73490face7e9d6f128236e
+Content-Type: application/json
+###
+
+
+POST http://localhost:9001/save
+Content-Type: application/json
+
+{"code":"consumer-save","amount":100.123}
+
+###
+
+GET http://localhost:9001/get/801dd98139594520903a177c9f607843
+Content-Type: application/json
+###

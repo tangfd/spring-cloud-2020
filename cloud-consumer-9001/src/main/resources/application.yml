@@ -1,0 +1,10 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: consumer-payment
+
+  #响应json 中 null值过滤
+  jackson:
+    default-property-inclusion: non_null
