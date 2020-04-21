@@ -12,8 +12,22 @@ spring:
 #响应json 中 null值过滤
   jackson:
     default-property-inclusion: non_null
+#    zookeeper 注册发现
+  cloud:
+    zookeeper:
+      connect-string: cloud.zook.com:2181
 
 # spring boot集成mybatis的方式打印sql
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#eureka 配置
+#eureka:
+#  instance:
+#    instance-id: ${spring.application.name}:${server.port}
+##    访问路径可以用显示IP地址
+#    prefer-ip-address: true
+#  client:
+#    serviceUrl:
+#      defaultZone: http://cloud.eureka.com:5050/eureka/

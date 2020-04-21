@@ -4,7 +4,19 @@ server:
 spring:
   application:
     name: consumer-payment
+#    zookeeper 注册发现
+  cloud:
+    zookeeper:
+      connect-string: cloud.zook.com:2181
 
   #响应json 中 null值过滤
   jackson:
     default-property-inclusion: non_null
+
+#eureka 配置
+#eureka:
+#  instance:
+#    instance-id: ${spring.application.name}:${server.port}
+#  client:
+#    serviceUrl:
+#      defaultZone: http://cloud.eureka.com:5050/eureka/
