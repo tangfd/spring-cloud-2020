@@ -16,6 +16,7 @@
         <module>cloud-provider-8001</module>
         <module>cloud-common</module>
         <module>cloud-consumer-9001</module>
+        <module>cloud-provider-feign-client</module>
     </modules>
 
     <properties>

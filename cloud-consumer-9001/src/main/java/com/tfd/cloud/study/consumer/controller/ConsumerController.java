@@ -2,6 +2,7 @@ package com.tfd.cloud.study.consumer.controller;
 
 import com.tfd.cloud.study.common.api.Payment;
 import com.tfd.cloud.study.common.utils.JsonResult;
+import com.tfd.cloud.study.provider.feign.client.ProviderClient;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,9 @@ public class ConsumerController {
     private RestTemplate restTemplate;
 
     @Resource
+    private ProviderClient providerClient;
+
+    @Resource
     private DiscoveryClient discoveryClient;
     // 对于zookeeper注册中心，服务名对大小写是敏感的
     private static final String PROVIDER_URL = "http://provider-payment/";
@@ -33,6 +37,16 @@ public class ConsumerController {
     @GetMapping("/get/{id}")
     public JsonResult<Payment> get(@PathVariable("id") String id) {
         return restTemplate.getForObject(PROVIDER_URL + "get/" + id, JsonResult.class);
+    }
+
+    @PostMapping("/saveF")
+    public JsonResult<String> saveF(@RequestBody Payment payment) {
+        return providerClient.save(payment);
+    }
+
+    @GetMapping("/getF/{id}")
+    public JsonResult<Payment> getF(@PathVariable("id") String id) {
+        return providerClient.get(id);
     }
 
     @GetMapping("/server")

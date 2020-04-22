@@ -20,3 +20,9 @@ spring:
 #  client:
 #    serviceUrl:
 #      defaultZone: http://cloud.eureka.com:5050/eureka/
+
+ribbon:
+#读取服务端资源超时时间
+  ReadTimeout: 5000
+#与服务端建立连接超时时间
+  ConnectTimeout: 5000
