@@ -26,3 +26,7 @@ ribbon:
   ReadTimeout: 5000
 #与服务端建立连接超时时间
   ConnectTimeout: 5000
+logging:
+  level:
+#    feign 日志，以什么级别监控哪个接口
+    com.tfd.cloud.study.provider.feign.client.ProviderClient: debug
