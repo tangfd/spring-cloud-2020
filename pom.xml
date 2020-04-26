@@ -14,9 +14,12 @@
 
     <modules>
         <module>cloud-provider-8001</module>
+        <module>cloud-provider-hystrix-8101</module>
         <module>cloud-common</module>
         <module>cloud-consumer-9001</module>
+        <module>cloud-consumer-hystrix-9101</module>
         <module>cloud-provider-feign-client</module>
+        <module>cloud-provider-feign-hystrix-client</module>
     </modules>
 
     <properties>
