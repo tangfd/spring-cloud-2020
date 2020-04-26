@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 /**
  * @since TangFD 2020/4/22
  */
-@FeignClient(name = "provider-payment", path = "/")
-public interface ProviderClient {
+@FeignClient(name = "provider-payment-hystrix", path = "/")
+public interface ProviderHystrixClient {
     @PostMapping("/save")
     JsonResult<String> save(@RequestBody Payment payment);
 
     @GetMapping("/get/{id}")
     JsonResult<Payment> get(@PathVariable("id") String id);
+
+    @GetMapping("/getE/{id}")
+    JsonResult<Payment> getE(@PathVariable("id") String id);
 }

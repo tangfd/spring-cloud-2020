@@ -18,12 +18,16 @@
         </dependency>
         <dependency>
             <groupId>com.tfd.cloud.study</groupId>
-            <artifactId>cloud-provider-feign-client</artifactId>
+            <artifactId>cloud-provider-feign-hystrix-client</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

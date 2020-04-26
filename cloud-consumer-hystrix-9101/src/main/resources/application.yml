@@ -1,9 +1,9 @@
 server:
-  port: 9001
+  port: 9101
 
 spring:
   application:
-    name: consumer-payment
+    name: consumer-payment-hystrix
 #    zookeeper 注册发现
   cloud:
     zookeeper:
@@ -23,9 +23,9 @@ spring:
 
 ribbon:
 #读取服务端资源超时时间
-  ReadTimeout: 5000
+  ReadTimeout: 1000
 #与服务端建立连接超时时间
-  ConnectTimeout: 5000
+  ConnectTimeout: 1000
 logging:
   level:
 #    feign 日志，以什么级别监控哪个接口

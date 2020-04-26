@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: provider-payment
+    name: provider-payment-hystrix
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://cloud.mysql.com:3306/cloud2020?allowPublicKeyRetrieval=true
