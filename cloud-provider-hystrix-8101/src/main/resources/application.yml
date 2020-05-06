@@ -22,6 +22,11 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+#    在feign client中开启hystrix功能
+feign:
+  hystrix:
+    enabled: true
+
 #eureka 配置
 #eureka:
 #  instance:

@@ -1,29 +1,24 @@
 package com.tfd.cloud.study.consumer.controller;
 
-import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.tfd.cloud.study.common.api.Payment;
 import com.tfd.cloud.study.common.utils.JsonResult;
 import com.tfd.cloud.study.provider.feign.client.ProviderHystrixClient;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
+ * 需要配置default fallback 才可对服务接口进行兜底
+ *
  * @since TangFD 2020-04-18
  **/
 @RestController
-//配置默认的fallback，仅对当前controller有效
-@DefaultProperties(defaultFallback = "deFallback", commandProperties = {
-        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")
-})
-public class ConsumerController {
+@RequestMapping("/c2")
+public class ConsumerController2 {
 
     @Resource
     private RestTemplate restTemplate;
@@ -41,7 +36,6 @@ public class ConsumerController {
         return restTemplate.postForObject(PROVIDER_URL + "save", payment, JsonResult.class);
     }
 
-    @HystrixCommand
     @GetMapping("/get/{id}")
     public JsonResult<Payment> get(@PathVariable("id") String id) {
         return restTemplate.getForObject(PROVIDER_URL + "get/" + id, JsonResult.class);
@@ -61,7 +55,7 @@ public class ConsumerController {
      * 自定义的fallback
      */
     @GetMapping("/getF/{id}")
-    @HystrixCommand(fallbackMethod = "getFall", commandProperties = {
+    @HystrixCommand(fallbackMethod = "getFall2", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")
     })
     public JsonResult<Payment> getF(@PathVariable("id") String id) {
@@ -78,14 +72,6 @@ public class ConsumerController {
     }
 
     /**
-     * feign client的fallback
-     */
-    @GetMapping("/getFDC/{id}")
-    public JsonResult<Payment> getFDC(@PathVariable("id") String id) {
-        return providerHystrixClient.get(id);
-    }
-
-    /**
      * 服务端的fallback
      */
     @GetMapping("/getFE/{id}")
@@ -93,25 +79,8 @@ public class ConsumerController {
         return providerHystrixClient.getE(id);
     }
 
-    public JsonResult<Payment> getFall(String id) {
-        return new JsonResult<>(false, "这是客户端的fallback方法");
+    public JsonResult<Payment> getFall2(String id) {
+        return new JsonResult<>(false, "c2: 这是客户端的fallback方法");
     }
 
-    /**
-     * 默认的fallback方法不能有参数
-     */
-    public JsonResult<Payment> deFallback() {
-        return new JsonResult<>(false, "这是默认的fallback方法");
-    }
-
-    @GetMapping("/server")
-    public List<ServiceInstance> getServer() {
-        List<ServiceInstance> instances = new ArrayList<>();
-        List<String> services = discoveryClient.getServices();
-        for (String service : services) {
-            instances.addAll(discoveryClient.getInstances(service));
-        }
-
-        return instances;
-    }
 }

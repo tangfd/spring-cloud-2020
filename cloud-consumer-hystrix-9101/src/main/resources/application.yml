@@ -30,3 +30,7 @@ logging:
   level:
 #    feign 日志，以什么级别监控哪个接口
     com.tfd.cloud.study.provider.feign.client.ProviderClient: debug
+#    在feign client 中开启hystrix功能
+feign:
+  hystrix:
+    enabled: true

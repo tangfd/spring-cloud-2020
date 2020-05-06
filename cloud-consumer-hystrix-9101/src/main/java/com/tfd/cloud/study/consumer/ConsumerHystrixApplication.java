@@ -1,5 +1,6 @@
 package com.tfd.cloud.study.consumer;
 
+import com.tfd.cloud.study.provider.feign.client.fallback.ProviderHystrixFallBack;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -23,5 +24,10 @@ public class ConsumerHystrixApplication {
     @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    @Bean
+    public ProviderHystrixFallBack providerHystrixFallBack() {
+        return new ProviderHystrixFallBack();
     }
 }
