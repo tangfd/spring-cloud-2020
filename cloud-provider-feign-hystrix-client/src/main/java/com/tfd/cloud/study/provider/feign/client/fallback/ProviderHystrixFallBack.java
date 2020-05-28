@@ -22,4 +22,9 @@ public class ProviderHystrixFallBack implements ProviderHystrixClient {
     public JsonResult<Payment> getE(String id) {
         return new JsonResult<>(false, "这是Feign client 配置的 fallback");
     }
+
+    @Override
+    public JsonResult<Payment> getIgnE(String id) {
+        return new JsonResult<>(false, "这是Feign client 配置的 fallback");
+    }
 }

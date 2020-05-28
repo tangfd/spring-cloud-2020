@@ -22,4 +22,7 @@ public interface ProviderHystrixClient {
 
     @GetMapping("/getE/{id}")
     JsonResult<Payment> getE(@PathVariable("id") String id);
+
+    @GetMapping("/getIgnE/{id}")
+    JsonResult<Payment> getIgnE(@PathVariable("id") String id);
 }
