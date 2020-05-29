@@ -10,21 +10,25 @@ import com.tfd.cloud.study.provider.feign.client.ProviderHystrixClient;
 public class ProviderHystrixFallBack implements ProviderHystrixClient {
     @Override
     public JsonResult<String> save(Payment payment) {
-        return new JsonResult<>(false, "这是Feign client 配置的 fallback");
+        return new JsonResult<>(false,
+                Thread.currentThread().getName() + ": 这是Feign client 配置的 fallback");
     }
 
     @Override
     public JsonResult<Payment> get(String id) {
-        return new JsonResult<>(false, "这是Feign client 配置的 fallback");
+        return new JsonResult<>(false,
+                Thread.currentThread().getName() + ": 这是Feign client 配置的 fallback");
     }
 
     @Override
     public JsonResult<Payment> getE(String id) {
-        return new JsonResult<>(false, "这是Feign client 配置的 fallback");
+        return new JsonResult<>(false,
+                Thread.currentThread().getName() + ": 这是Feign client 配置的 fallback");
     }
 
     @Override
     public JsonResult<Payment> getIgnE(String id) {
-        return new JsonResult<>(false, "这是Feign client 配置的 fallback");
+        return new JsonResult<>(false,
+                Thread.currentThread().getName() + ": 这是Feign client 配置的 fallback");
     }
 }

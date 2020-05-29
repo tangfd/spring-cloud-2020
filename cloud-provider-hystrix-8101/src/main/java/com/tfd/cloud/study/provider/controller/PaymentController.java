@@ -33,7 +33,7 @@ public class PaymentController implements ProviderHystrixClient {
     }
 
     /**
-     * 服务端 降级，默认对服务超时和服务异常均做降级
+     * 服务端 降级 熔断，默认对服务超时和服务异常均做降级
      * {@link HystrixProperty}的属性配置再 {@link HystrixCommandProperties} 中
      */
     @Override
@@ -45,7 +45,7 @@ public class PaymentController implements ProviderHystrixClient {
              *
              * SEMAPHORE —— 在调用线程中执行，通过信号量来限制并发量
              */
-            @HystrixProperty(name = "execution.isolation.strategy", value = "THREAD"),
+            @HystrixProperty(name = "execution.isolation.strategy", value = "SEMAPHORE"),
             /**
              * 设置HystrixCommand.run()的执行是否启用超时限制 默认为true
              */

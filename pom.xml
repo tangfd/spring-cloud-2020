@@ -20,6 +20,7 @@
         <module>cloud-consumer-hystrix-9101</module>
         <module>cloud-provider-feign-client</module>
         <module>cloud-provider-feign-hystrix-client</module>
+        <module>cloud-hystrix-dashboard-9102</module>
     </modules>
 
     <properties>
