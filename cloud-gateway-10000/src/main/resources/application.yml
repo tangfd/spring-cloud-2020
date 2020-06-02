@@ -1,0 +1,17 @@
+server:
+  port: 10001
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: first_gateway
+        uri: https://www.tangfd.club/order
+        predicates:
+        - Path=/order
+        - Method=post
+        - Cookie=aa, bb
+
+#        - After=2020-06-02T23:07:05.229+08:00[Asia/Shanghai]
+#          Before=2020-06-02T23:03:05.229+08:00[Asia/Shanghai]
+
+
