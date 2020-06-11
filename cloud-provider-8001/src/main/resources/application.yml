@@ -13,9 +13,9 @@ spring:
   jackson:
     default-property-inclusion: non_null
 #    zookeeper 注册发现
-  cloud:
-    zookeeper:
-      connect-string: cloud.zook.com:2181
+#  cloud:
+#    zookeeper:
+#      connect-string: cloud.zook.com:2181
 
 # spring boot集成mybatis的方式打印sql
 mybatis:

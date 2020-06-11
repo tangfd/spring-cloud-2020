@@ -1,7 +1,10 @@
 server:
   port: 10001
+
 spring:
   cloud:
+#    zookeeper:
+#      connect-string: cloud.zook.com:2181
     gateway:
       routes:
       - id: first_gateway
@@ -10,8 +13,12 @@ spring:
         - Path=/order
         - Method=post
         - Cookie=aa, bb
+      discovery:
+        locator:
+          enabled: true
+#          lower-case-service-id: true
+  application:
+    name: cloud-gateway
 
 #        - After=2020-06-02T23:07:05.229+08:00[Asia/Shanghai]
 #          Before=2020-06-02T23:03:05.229+08:00[Asia/Shanghai]
-
-
