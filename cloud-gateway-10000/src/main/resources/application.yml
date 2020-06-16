@@ -2,29 +2,42 @@ server:
   port: 10100
 
 spring:
+  application:
+    name: cloud-gateway
   cloud:
 #    zookeeper:
 #      connect-string: cloud.zook.com:2181
     gateway:
-      routes:
-      - id: first_gateway
-        uri: https://www.tangfd.club/order
-        predicates:
-        - Path=/order
-#        - Method=post
-#        - Cookie=aa, bb
-      - id: secod_gateway
-        uri: lb://provider-payment
-        predicates:
-        - Path=/get/**
-        - Query=aa, bb*
-
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
-  application:
-    name: cloud-gateway
-
+#      routes:
+#      - id: first_gateway
+#        uri: https://www.tangfd.club/order
+#        predicates:
+#        - Path=/order
+#        - Method=post
+#        - Cookie=aa, bb
+#      - id: secod_gateway
+#        uri: lb://provider-payment
+#        predicates:
+#        - Path=/get/**
+#        - Query=aa, bb*
 #        - After=2020-06-02T23:07:05.229+08:00[Asia/Shanghai]
 #          Before=2020-06-02T23:03:05.229+08:00[Asia/Shanghai]
+
+#eureka:
+#  instance:
+#    instance-id: ${spring.application.name}:${server.port}
+##    访问路径可以用显示IP地址
+#    prefer-ip-address: true
+#  client:
+#    serviceUrl:
+#      defaultZone: http://cloud.eureka.com:5050/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
