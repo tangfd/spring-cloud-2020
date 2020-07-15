@@ -25,6 +25,12 @@
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
+        <!--基于 Redis 的限流-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
         <!--nacos 服务发现-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
