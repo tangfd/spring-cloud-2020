@@ -12,11 +12,27 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-#      routes:
-#      - id: first_gateway
-#        uri: https://www.tangfd.club/order
-#        predicates:
-#        - Path=/order
+      routes:
+      - id: first_gateway
+        uri: lb://provider-payment
+        predicates:
+        - Path=/get/**
+        filters:
+#        filter 名称必须是 RequestRateLimiter
+        - name: RequestRateLimiter
+          args:
+#           令牌桶每秒填充平均速率
+            redis-rate-limiter.replenishRate: 1
+#           令牌桶的容量，允许在一秒钟内完成的最大请求数
+            redis-rate-limiter.burstCapacity: 3
+#           用于限流的键的解析器的 Bean 对象的名字。它使用 SpEL 表达式根据#{@beanName}从 Spring 容器中获取 Bean 对象。
+            key-resolver: "#{@hostKeyResolver}"
+#  redis:
+#    cluster:
+#      max-redirects: 3
+#      nodes: cloud.redis.com:8002,cloud.redis.com:8003,cloud.redis.com:8801,cloud.redis.com:8802,cloud.redis.com:8803
+#    client-name: redis-limit-cluster
+
 #        - Method=post
 #        - Cookie=aa, bb
 #      - id: secod_gateway
