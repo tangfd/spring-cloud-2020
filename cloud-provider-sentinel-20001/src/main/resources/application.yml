@@ -1,0 +1,19 @@
+server:
+  port: 20001
+spring:
+  application:
+    name: provider-sentinel
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:16666
+      log:
+        dir: F:\\project\\spring-cloud-2020\\cloud-provider-sentinel-20001\\csp\\
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+

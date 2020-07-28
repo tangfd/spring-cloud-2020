@@ -22,6 +22,7 @@
         <module>cloud-provider-feign-hystrix-client</module>
         <module>cloud-hystrix-dashboard-9102</module>
         <module>cloud-gateway-10000</module>
+        <module>cloud-provider-sentinel-20001</module>
     </modules>
 
     <properties>
