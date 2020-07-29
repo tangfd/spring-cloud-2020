@@ -6,9 +6,9 @@ spring:
   cloud:
     sentinel:
       transport:
-        dashboard: localhost:16666
+        dashboard: cloud.sentinel.com:16666
       log:
-        dir: F:\\project\\spring-cloud-2020\\cloud-provider-sentinel-20001\\csp\\
+        dir: D:\\my_project\\spring-cloud-2020\\cloud-provider-sentinel-20001\\csp\\
 
 management:
   endpoints:
