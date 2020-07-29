@@ -1,0 +1,1 @@
+java -Xms128m -Xmx128m -Xmn128m -Xss256k -Dsentinel.dashboard.auth.password=sentinel@123.com -Dproject.name=sentinel-dashboard  -jar sentinel-dashboard-1.7.2.jar --server.port=16666
