@@ -6,8 +6,16 @@ spring:
   cloud:
     sentinel:
       transport:
-        dashboard: localhost:16666
-        port: 8720
+        dashboard: cloud.sentinel.com:16666
+      datasource:
+        test:
+          nacos:
+            server-addr: cloud.nacos.com:8848
+            namespace: 5e94653e-ebe3-4e88-af0a-b3e98b9b67b5
+            dataId: provider-sentinel-nacos-rule
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
 
 management:
   endpoints:
